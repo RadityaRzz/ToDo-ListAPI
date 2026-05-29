@@ -162,6 +162,56 @@ Authorization: Bearer {token}
 
 ---
 
+## Struktur Folder
+
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── AuthController.php           # API Auth (register, login, logout)
+│   │   ├── TaskController.php           # API Task CRUD
+│   │   ├── PublicTaskController.php     # API Public Tasks
+│   │   ├── WebAuthController.php        # Web Auth (UI)
+│   │   └── WebTaskController.php        # Web Task (UI)
+│   ├── Requests/
+│   │   ├── RegisterRequest.php          # Validasi register
+│   │   ├── LoginRequest.php             # Validasi login
+│   │   ├── StoreTaskRequest.php         # Validasi create task
+│   │   └── UpdateTaskRequest.php        # Validasi update task
+│   └── Resources/
+│       └── TaskResource.php             # Format response JSON task
+├── Models/
+│   ├── User.php                         # Model User + relasi tasks
+│   └── Task.php                         # Model Task + relasi user
+database/
+├── migrations/
+│   ├── 0001_01_01_000000_create_users_table.php
+│   ├── 2026_05_22_072620_create_personal_access_tokens_table.php
+│   └── 2026_05_22_072628_create_tasks_table.php
+└── seeders/
+    └── DatabaseSeeder.php               # Data dummy untuk testing
+routes/
+├── api.php                              # Semua route API
+└── web.php                              # Route web UI
+resources/
+├── views/
+│   ├── layouts/
+│   │   └── app.blade.php                # Layout utama
+│   ├── auth/
+│   │   ├── login.blade.php              # Halaman login
+│   │   └── register.blade.php           # Halaman register
+│   └── tasks/
+│       ├── index.blade.php              # Dashboard list task
+│       ├── create.blade.php             # Form create task
+│       ├── edit.blade.php               # Form edit task
+│       ├── _form.blade.php              # Partial form
+│       └── _card.blade.php              # Partial card task
+└── css/
+    └── app.css                          # Tailwind CSS
+```
+
+---
+
 ## Penjelasan Teknis Kode
 
 Bagian ini menjelaskan cara kerja komponen utama project supaya lebih mudah dipahami.
